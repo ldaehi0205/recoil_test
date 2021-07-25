@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# Context Api
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 동적으로 바뀌지 않을 데이터 상태관리(테마,스타일 등)
+- 확정되지 않는 값을 저장하는데 적합하지 않으며, 최적화 관점에서 한계점이 명확함
+- 동적으로 데이터를 변경시 제대로 변경되지 않는 문제점
+- 많은 양의 데이터를 상태관리 할 시 코드가 지저분해지고 가독성이 떨어짐
+- 다이나믹하게 상태관리를 할때 provider가 많이 사용됨
 
-## Available Scripts
+# Redux
 
-In the project directory, you can run:
+- 정보의 생태계가 넓고 활용예시가 많음
+- 러닝커브가 있고 간단한 상태관리에도 많은양의 코드를 사용함
+- store에서 사용되는 정보가 바뀌었을 때 렌더되는 로직을 작성햐야함
 
-### `yarn start`
+# Recoil
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- react에 전역상태 관리를 위한 라이브러리로 hook과 비슷하여 사용하기 쉬움
+- 파생데이터를 사용하므로 컴포넌트에서 데이터를 변경하는 로직을 써주지 않아도됨
+- 정보의 생태계가 작음
+- 디버깅 툴 지원이 미비함
+- hook으로만 사용가능
+- SSR 문제가있어 해결하기위한 로직을 작성해야함
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* Atom
 
-### `yarn test`
+- 데이터를 보관하는 작은 단위
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Selector
 
-### `yarn build`
+- 파생되는 아톰을 리턴함
+- 아톰을 조합하여 리턴 가능
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* useRecoilValue
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- read only
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* useRecoilState
 
-### `yarn eject`
+- hook에서 useState사용이 비슷함
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* useSetRecoilState
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 값을 변경하기 위한 함수를 리턴함
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* useResetRecoilState
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- 디폴트 값으로 변경
 
-## Learn More
+* useRecoilStateLoadable
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- 비동기 selector를 읽기 위해 사용됨
+- Loadable state객체를 반환함(Loadable은 최신 아톰 셀렉터 상태)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* useRecoilValueLoadable
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 비동기 selector를 읽기 위해 사용됨
+- Loadable Value객체를 반환함(Loadable은 최신 아톰 셀렉터 상태)
